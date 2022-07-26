@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-sample
+  labels:
+    app: go-sample
+spec:
+  ports:
+    - port: 8080 # Serviceには8080で入る
+      protocol: TCP
+      targetPort: 8080 # Deploymentには8080で入る
+  selector:
+    app: go-sample # 疎通したいDeploymentの名前
+  type: LoadBalancer # ServiceのTypeをLoadBalancerに指定するとローカルマシンからアクセスが出来る
